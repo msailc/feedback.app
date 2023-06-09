@@ -6,7 +6,9 @@ class UserService {
     }
 
     async getUserById(userId: number) {
-        return User.findByPk(userId);
+        return User.findByPk(userId,{
+            include: 'reviews',
+        });
     }
 
     async createUser(username: string, email: string, password: string) {

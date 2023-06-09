@@ -10,7 +10,7 @@
 /build
 
 # ts to js generated folder
-/dist
+/release
 
 # misc
 .DS_Store

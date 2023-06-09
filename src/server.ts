@@ -8,7 +8,7 @@ const port = 3000;
 app.use(express.json());
 app.use(router);
 
-initializeDatabase().then(() => {
+initializeDatabase().then(() => { // initialize database before starting the server
     app.listen(port, () => {
         console.log(`Server is running on port ${port}`);
     });

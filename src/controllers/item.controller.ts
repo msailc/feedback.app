@@ -1,6 +1,5 @@
 import { Request, Response } from 'express';
 import ItemService from '../services/item.service';
-import Item from "../models/item.model";
 
 class ItemController {
     async getAllItems(req: Request, res: Response) {
@@ -8,12 +7,11 @@ class ItemController {
         res.json(items);
     }
 
-    async getItemById(req: Request, res: Response) {
+    async getItemReviews(req: Request, res: Response) {
         const id = Number(req.params.id);
         const item = await ItemService.getItemById(id);
         res.json(item);
     }
-
 }
 
 export default new ItemController();

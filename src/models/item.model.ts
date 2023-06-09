@@ -1,5 +1,6 @@
 import { DataTypes, Model } from 'sequelize';
 import { sequelize } from './db';
+import Review from "./review.model";
 
 const ItemType = {
     HOTEL: 'hotel',
@@ -17,7 +18,6 @@ interface ItemAttributes {
     price: number;
     image: string;
     city: string;
-    cost: string;
     isRecommended: boolean;
     details: string;
     url: string;
@@ -32,7 +32,6 @@ class Item extends Model<ItemAttributes> implements ItemAttributes {
     public price!: number;
     public image!: string;
     public city!: string;
-    public cost!: string;
     public isRecommended!: boolean;
     public details!: string;
     public url!: string;
@@ -73,10 +72,6 @@ Item.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
-        cost: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
         isRecommended: {
             type: DataTypes.BOOLEAN,
             allowNull: false,
@@ -96,5 +91,7 @@ Item.init(
         tableName: 'items',
     }
 );
+
+Item.hasMany(Review, { foreignKey: 'itemId' });
 
 export default Item;

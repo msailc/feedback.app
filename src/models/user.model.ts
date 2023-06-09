@@ -1,6 +1,7 @@
 import { DataTypes, Model } from 'sequelize';
 import { sequelize } from './db';
 
+// this is where we define the model attributes
 interface UserAttributes {
     id: number;
     username: string;
@@ -8,6 +9,7 @@ interface UserAttributes {
     password: string;
 }
 
+// this class is used to create instances of the user model,'!' means that the value can be null and assigned later
 class User extends Model<UserAttributes> implements UserAttributes {
     public id!: number;
     public username!: string;
@@ -15,6 +17,7 @@ class User extends Model<UserAttributes> implements UserAttributes {
     public password!: string;
 }
 
+// this is where we define the model and create it in database
 User.init(
     {
         id: {
@@ -43,3 +46,4 @@ User.init(
 );
 
 export default User;
+
