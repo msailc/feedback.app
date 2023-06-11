@@ -5,7 +5,7 @@ import ReviewService from "../services/review.service";
 
 class ReviewController {
     async createReview(req: Request, res: Response) {
-        const { userId, itemId, comment, grade } = req.body;
+        const { userId, itemId, grade } = req.body;
 
         try {
             const user = await UserService.getUserById(userId);
@@ -18,7 +18,7 @@ class ReviewController {
                 return res.status(404).json({ message: 'Item not found' });
             }
 
-            const review = await ReviewService.createReview(userId, itemId, comment, grade);
+            const review = await ReviewService.createReview(userId, itemId, grade);
 
             return res.status(201).json(review);
         } catch (error) {

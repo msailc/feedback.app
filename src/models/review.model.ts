@@ -7,7 +7,6 @@ interface ReviewAttributes {
     id: number;
     userId: number;
     itemId: number;
-    comment: string;
     grade: number;
 }
 
@@ -15,7 +14,6 @@ class Review extends Model<ReviewAttributes> implements ReviewAttributes {
     public id!: number;
     public userId!: number;
     public itemId!: number;
-    public comment!: string;
     public grade!: number;
 }
 
@@ -41,10 +39,6 @@ Review.init(
                 model: Item,
                 key: 'id',
             },
-        },
-        comment: {
-            type: DataTypes.STRING,
-            allowNull: false,
         },
         grade: {
             type: DataTypes.INTEGER,

@@ -2,11 +2,22 @@ import { Sequelize } from 'sequelize';
 import * as fs from "fs";
 import Item from "./item.model";
 import path from "path";
+import dotenv from "dotenv";
 
-// initialize database connection, 1st param is database name, 2nd is username, 3rd is password
-const sequelize = new Sequelize('karolina', 'root', '123456', {
-    host: '127.0.0.1',
-    port: 3306,
+dotenv.config(); // Load the environment variables from .env file
+
+const {
+    DB_NAME = '',
+    DB_USER = '',
+    DB_PASSWORD = '',
+    DB_HOST = '',
+    DB_PORT = '',
+} = process.env;
+
+// initialize database connection
+const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {
+    host: DB_HOST,
+    port: Number(DB_PORT),
     dialect: 'mysql',
 });
 

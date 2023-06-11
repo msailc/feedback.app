@@ -14,7 +14,6 @@ interface ItemAttributes {
     name: string;
     address: string;
     type: string;
-    rating: number;
     price: number;
     image: string;
     city: string;
@@ -30,7 +29,6 @@ class Item extends Model<ItemAttributes> implements ItemAttributes {
     public name!: string;
     public address!: string;
     public type!: string;
-    public rating!: number;
     public price!: number;
     public image!: string;
     public city!: string;
@@ -58,10 +56,6 @@ Item.init(
         },
         type: {
             type: DataTypes.ENUM(...Object.values(ItemType)),
-            allowNull: false,
-        },
-        rating: {
-            type: DataTypes.FLOAT,
             allowNull: false,
         },
         price: {

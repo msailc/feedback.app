@@ -58,7 +58,9 @@ class UserController {
                 return res.status(401).json({ message: 'Invalid credentials' });
             }
 
-            const token = jwt.sign({ userId: user.id }, 'secret-key');
+            const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET as string, {
+                expiresIn: '1h',
+            });
 
             return res.status(200).json({ token });
         } catch (error) {
