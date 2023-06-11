@@ -13,7 +13,7 @@ class ReviewController {
                 return res.status(404).json({ message: 'User not found' });
             }
 
-            const item = await ItemService.getItemById(itemId);
+            const item = await ItemService.getItem(itemId);
             if (!item) {
                 return res.status(404).json({ message: 'Item not found' });
             }

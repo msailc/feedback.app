@@ -21,6 +21,8 @@ interface ItemAttributes {
     isRecommended: boolean;
     details: string;
     url: string;
+    latitude: string;
+    longitude: string;
 }
 
 class Item extends Model<ItemAttributes> implements ItemAttributes {
@@ -35,6 +37,8 @@ class Item extends Model<ItemAttributes> implements ItemAttributes {
     public isRecommended!: boolean;
     public details!: string;
     public url!: string;
+    public latitude!: string;
+    public longitude!: string;
 }
 
 Item.init(
@@ -82,8 +86,16 @@ Item.init(
         },
         url: {
             type: DataTypes.STRING,
+            allowNull: true,
+        },
+        latitude: {
+            type: DataTypes.STRING,
             allowNull: false,
         },
+        longitude: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        }
     },
     {
         sequelize,

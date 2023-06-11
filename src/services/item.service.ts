@@ -19,7 +19,24 @@ class ItemService {
         });
     }
 
-    async getItemById(itemId: number) {
+    async getItemsByType(type: string) {
+        return Item.findAll({
+            where: { type },
+            attributes: {
+                include: [[sequelize.fn('COUNT', sequelize.col('reviews.id')), 'reviewCount']],
+            },
+            include: [
+                {
+                    model: Review,
+                    as: 'reviews',
+                    attributes: [],
+                },
+            ],
+            group: ['item.id'],
+        });
+    }
+
+    async getItem(itemId: number) {
         return Item.findByPk(itemId, {
             include: [
                 {
