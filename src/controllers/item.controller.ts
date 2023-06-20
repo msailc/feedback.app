@@ -18,7 +18,9 @@ class ItemController {
             items = await ItemService.getAllItems();
         }
 
-        res.json(items);
+        const responseObj = { items };
+
+        res.json(responseObj);
     }
 
     async getItem(req: Request, res: Response) {

@@ -17,6 +17,7 @@ interface ItemAttributes {
     price: number;
     image: string;
     city: string;
+    cost: string;
     isRecommended: boolean;
     details: string;
     url: string;
@@ -29,6 +30,7 @@ class Item extends Model<ItemAttributes> implements ItemAttributes {
     public name!: string;
     public address!: string;
     public type!: string;
+    public cost!: string;
     public price!: number;
     public image!: string;
     public city!: string;
@@ -61,6 +63,10 @@ Item.init(
         price: {
             type: DataTypes.INTEGER,
             allowNull: false,
+        },
+        cost: {
+            type: DataTypes.STRING,
+            allowNull: true
         },
         image: {
             type: DataTypes.STRING,

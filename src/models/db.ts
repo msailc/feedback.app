@@ -26,7 +26,7 @@ async function initializeDatabase() { // initialize database before starting the
         await sequelize.authenticate(); // check connection
         console.log('Connection has been established successfully.');
 
-        await sequelize.sync({ force: true }); // create tables if they don't exist, set true to drop tables first
+        await sequelize.sync({ force: false }); // create tables if they don't exist, set true to drop tables first
         console.log('Database schema synchronized.');
 
         await seedDatabase(); // seed the database with initial data

@@ -1,6 +1,6 @@
 import express from 'express';
 import router from './routes';
-import {initializeDatabase} from "./models/db";
+import { initializeDatabase } from "./models/db";
 
 const app = express();
 const port = 3000;
